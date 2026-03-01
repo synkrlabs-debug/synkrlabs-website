@@ -1,0 +1,140 @@
+.footer {
+    background: var(--color-bg-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    padding-top: 2rem;
+}
+
+/* Huge Animated Footer Text */
+.footer-big-text-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+    padding-top: 2rem;
+}
+
+.footer-big-text {
+    font-size: clamp(4rem, 11.5vw, 20rem);
+    /* Scaled down to fit 9 characters horizontally */
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.05);
+    margin: 0;
+    line-height: 1;
+    /* Reset line height to allow the descender */
+    padding-bottom: 0.1em;
+    /* Add slight padding for the 'y' descender */
+    letter-spacing: -0.02em;
+    position: relative;
+    /* Let content dictate height natively */
+    background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="%23ff4500" stop-opacity="0.8"/><stop offset="30%" stop-color="%23ff8c00" stop-opacity="1"/><stop offset="50%" stop-color="%23ff0000" stop-opacity="0.9"/><stop offset="80%" stop-color="%23ff8c00" stop-opacity="1"/><stop offset="100%" stop-color="%23ff4500" stop-opacity="0.8"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/></svg>') 0 0/200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: flowOrange 6s linear infinite;
+}
+
+@keyframes flowOrange {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: -200% 50%;
+    }
+}
+
+.footer-animated-glow {
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 200px;
+    background: radial-gradient(ellipse at center, rgba(255, 69, 0, 0.15) 0%, transparent 70%);
+    filter: blur(40px);
+    z-index: 0;
+    animation: glowPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% {
+        opacity: 0.5;
+        transform: translateX(-50%) scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.1);
+    }
+}
+
+/* Single Line Footer Bottom */
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-copyright {
+    flex: 1;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 1.5rem;
+    flex: 1;
+    justify-content: center;
+}
+
+.footer-legal a:hover {
+    color: #fff;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.footer-social a {
+    color: var(--color-text-muted);
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-social a:hover {
+    color: var(--color-primary);
+}
+
+@media (max-width: 968px) {
+    .footer-bottom {
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .footer-copyright,
+    .footer-legal,
+    .footer-social {
+        flex: 100%;
+        justify-content: center;
+        text-align: center;
+        order: unset;
+        margin: 0;
+    }
+}

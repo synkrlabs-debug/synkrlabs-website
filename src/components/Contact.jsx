@@ -8,7 +8,8 @@ const Contact = () => {
         name: '',
         email: '',
         phone: '',
-        message: ''
+        message: '',
+        _honeypot: '' // Hidden anti-spam field
     });
     const [status, setStatus] = useState({ state: 'idle', message: '' });
 
@@ -36,7 +37,7 @@ const Contact = () => {
 
             if (response.ok) {
                 setStatus({ state: 'success', message: 'Message sent successfully! Our team will contact you shortly.' });
-                setFormState({ name: '', email: '', phone: '', message: '' });
+                setFormState({ name: '', email: '', phone: '', message: '', _honeypot: '' });
             } else {
                 setStatus({ state: 'error', message: data.message || 'Something went wrong. Please try again later.' });
             }
@@ -116,6 +117,7 @@ const Contact = () => {
                                 value={formState.name}
                                 onChange={handleChange}
                                 disabled={status.state === 'loading'}
+                                maxLength={100}
                                 required
                             />
                         </div>
@@ -130,6 +132,7 @@ const Contact = () => {
                                 value={formState.email}
                                 onChange={handleChange}
                                 disabled={status.state === 'loading'}
+                                maxLength={254}
                                 required
                             />
                         </div>
@@ -144,6 +147,7 @@ const Contact = () => {
                                 value={formState.phone}
                                 onChange={handleChange}
                                 disabled={status.state === 'loading'}
+                                maxLength={20}
                             />
                         </div>
 
@@ -157,8 +161,23 @@ const Contact = () => {
                                 value={formState.message}
                                 onChange={handleChange}
                                 disabled={status.state === 'loading'}
+                                maxLength={5000}
                                 required
                             ></textarea>
+                        </div>
+
+                        {/* Honeypot field - hidden from real users, bots will fill it */}
+                        <div style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }} aria-hidden="true">
+                            <label htmlFor="_honeypot">Do not fill this</label>
+                            <input
+                                type="text"
+                                id="_honeypot"
+                                name="_honeypot"
+                                value={formState._honeypot}
+                                onChange={handleChange}
+                                tabIndex={-1}
+                                autoComplete="off"
+                            />
                         </div>
 
                         {status.message && (

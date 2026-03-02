@@ -7,8 +7,10 @@ const Contact = () => {
     const [formState, setFormState] = useState({
         name: '',
         email: '',
+        phone: '',
         message: ''
     });
+    const [status, setStatus] = useState({ state: 'idle', message: '' });
 
     const handleChange = (e) => {
         setFormState({
@@ -17,12 +19,31 @@ const Contact = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Placeholder for actual form submission logic
-        console.log('Form submitted:', formState);
-        alert("Thanks for reaching out! This is a demo form.");
-        setFormState({ name: '', email: '', message: '' });
+        setStatus({ state: 'loading', message: '' });
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formState),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setStatus({ state: 'success', message: 'Message sent successfully! Our team will contact you shortly.' });
+                setFormState({ name: '', email: '', phone: '', message: '' });
+            } else {
+                setStatus({ state: 'error', message: data.message || 'Something went wrong. Please try again later.' });
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            setStatus({ state: 'error', message: 'Failed to send message. Please check your connection and try again.' });
+        }
     };
 
     return (
@@ -94,6 +115,7 @@ const Contact = () => {
                                 placeholder="Rajesh Kumar"
                                 value={formState.name}
                                 onChange={handleChange}
+                                disabled={status.state === 'loading'}
                                 required
                             />
                         </div>
@@ -107,7 +129,21 @@ const Contact = () => {
                                 placeholder="rajesh@startup.in"
                                 value={formState.email}
                                 onChange={handleChange}
+                                disabled={status.state === 'loading'}
                                 required
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="phone">Phone Number (Optional)</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="+91 98765 43210"
+                                value={formState.phone}
+                                onChange={handleChange}
+                                disabled={status.state === 'loading'}
                             />
                         </div>
 
@@ -120,12 +156,25 @@ const Contact = () => {
                                 placeholder="How can we help?"
                                 value={formState.message}
                                 onChange={handleChange}
+                                disabled={status.state === 'loading'}
                                 required
                             ></textarea>
                         </div>
 
-                        <button type="submit" className="btn btn-primary submit-btn">
-                            Send Message <Send size={18} />
+                        {status.message && (
+                            <div className={`form-status ${status.state}`}>
+                                {status.message}
+                            </div>
+                        )}
+
+                        <button
+                            type="submit"
+                            className="btn btn-primary submit-btn"
+                            disabled={status.state === 'loading'}
+                        >
+                            {status.state === 'loading' ? 'Sending...' : (
+                                <>Send Message <Send size={18} /></>
+                            )}
                         </button>
                     </motion.form>
                 </div>

@@ -33,9 +33,15 @@ export default async function handler(req, res) {
         }
 
         // 2. Validate Environment Variables
-        const { GOOGLE_SHEET_ID, GMAIL_EMAIL, GMAIL_APP_PASSWORD, GOOGLE_CREDENTIALS_PATH } = process.env;
-        if (!GOOGLE_SHEET_ID || !GMAIL_EMAIL || !GMAIL_APP_PASSWORD) {
-            console.error('[Configuration Error] Missing critical environment variables.');
+        const { GOOGLE_SHEET_ID, GMAIL_EMAIL, GMAIL_APP_PASSWORD, GOOGLE_CREDENTIALS, GOOGLE_CREDENTIALS_PATH } = process.env;
+
+        let missingVars = [];
+        if (!GOOGLE_SHEET_ID) missingVars.push('GOOGLE_SHEET_ID');
+        if (!GMAIL_EMAIL) missingVars.push('GMAIL_EMAIL');
+        if (!GMAIL_APP_PASSWORD) missingVars.push('GMAIL_APP_PASSWORD');
+
+        if (missingVars.length > 0) {
+            console.error(`[Configuration Error] Missing critical environment variables: ${missingVars.join(', ')}`);
             return res.status(500).json({ success: false, message: 'Internal server error: Configuration missing.' });
         }
 

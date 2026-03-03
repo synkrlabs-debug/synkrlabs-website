@@ -5,25 +5,32 @@ import './Portfolio.css';
 
 const projects = [
     {
-        title: "Lumina E-Commerce",
-        category: "E-Commerce Platform",
-        description: "A high-conversion frontend built for a premium lifestyle brand with seamless Shopify Plus integration and 3D product previews.",
-        image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=2670&auto=format&fit=crop",
-        link: "#"
+        title: "NorthEast Wild Expedition",
+        category: "Travel & Tours",
+        description: "Bespoke, immersive travel experiences that redefine luxury and adventure in NorthEast India.",
+        image: "/northeast-wild-expedition.png",
+        link: "https://northeast-wild-expedition.vercel.app/"
     },
     {
-        title: "Apex Logistics",
-        category: "B2B SaaS Dashboard",
-        description: "Enterprise-grade fleet management dashboard featuring real-time interactive mapping and secure partner portals.",
-        image: "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2670&auto=format&fit=crop",
-        link: "#"
+        title: "Personal Portfolio Website",
+        category: "Portfolio",
+        description: "A personal portfolio website showcasing design and development skills.",
+        image: "/prayash-portfolio.png",
+        link: "https://prayash-portfolio-seven.vercel.app/"
     },
     {
-        title: "Nexus Finance",
-        category: "FinTech Web App",
-        description: "Modern, secure, and incredibly fast banking interface handling real-time crypto transactions and portfolio data.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
-        link: "#"
+        title: "Trident Fitness",
+        category: "Fitness Website",
+        description: "A premium fitness platform designed with dynamic features, workout tracking, and health metrics.",
+        image: "/trident-fitness.png",
+        link: "https://trident-fitness-v1.vercel.app/"
+    },
+    {
+        title: "GoCareer",
+        category: "Career Counseling Portal",
+        description: "An empowering platform designed to help rural students discover and navigate their perfect career paths.",
+        image: "/go-career.png",
+        link: "https://gocareer.snehit70.dev/"
     }
 ];
 
@@ -52,7 +59,7 @@ const Portfolio = () => {
                             <div className="portfolio-img-wrapper">
                                 <img src={project.image} alt={project.title} className="portfolio-img" loading="lazy" />
                                 <div className="portfolio-overlay">
-                                    <a href={project.link} className="btn btn-primary btn-sm portfolio-link">
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm portfolio-link">
                                         View Project <ExternalLink size={16} />
                                     </a>
                                 </div>

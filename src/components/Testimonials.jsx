@@ -5,28 +5,29 @@ import './Testimonials.css';
 
 const testimonials = [
     {
-        quote: "SynkrLabs didn't just build us a website; they architected a digital platform that completely transformed our customer acquisition funnel.",
-        author: "Elena Rodriguez",
-        role: "CEO, TechFlow",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150"
+        quote: "SynkrLabs developed a lightning-fast and highly secure website for Somadhan Technologies. Their attention to detail and understanding of modern web architecture is truly impressive.",
+        author: "Dr. Utpal Barman",
+        role: "Founder, Somadhan Technologies"
     },
     {
-        quote: "Their grasp on deeptech and generative AI integration is unparalleled. They brought our visionary concepts into a robust, working reality.",
-        author: "Marcus Chen",
-        role: "CTO, Quantum Nexus",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150"
+        quote: "The team delivered a portal that is both intuitive and visually appealing. Their web development expertise made organizing complex information look completely effortless.",
+        author: "Dr. Kaustubh Bhattacharya",
+        role: "Associate Professor"
     },
     {
-        quote: "The team is incredibly fast and responsive. The glassmorphic design and smooth animations they implemented elevated our brand premiumness instantly.",
-        author: "Sarah Jenkins",
-        role: "Founder, Elevate Design",
-        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150"
+        quote: "Working with them was a seamless experience. They built my entire business platform from scratch, ensuring it looks premium and runs perfectly on all modern devices.",
+        author: "Parag Bhagawati",
+        role: "Business Owner"
     },
     {
-        quote: "We partnered with SynkrLabs for a simple landing page and ended up with a strategic technology partner for our entire startup lifecycle.",
-        author: "David Williams",
-        role: "Director, InnovateX",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150"
+        quote: "They completely revamped our online presence. The new custom web design and smooth user interface helped us showcase our capabilities beautifully to a much wider audience.",
+        author: "Nabakumar Sarma",
+        role: "Maa Kamakhya Food Processing"
+    },
+    {
+        quote: "SynkrLabs provided an excellent web solution tailored to our specific structural needs. The responsive design and clean, scalable code have significantly improved our workflow.",
+        author: "Dr. Sujit Kumar Das",
+        role: "Assistant Professor"
     }
 ];
 
@@ -56,7 +57,6 @@ const Testimonials = () => {
                                 <Quote size={32} className="testimonial-quote-icon" />
                                 <p className="testimonial-text">&quot;{testimonial.quote}&quot;</p>
                                 <div className="testimonial-author-block">
-                                    <img src={testimonial.image} alt={testimonial.author} className="testimonial-avatar" loading="lazy" />
                                     <div className="testimonial-author-info">
                                         <h4>{testimonial.author}</h4>
                                         <span>{testimonial.role}</span>

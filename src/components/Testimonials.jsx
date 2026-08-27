@@ -5,9 +5,9 @@ import './Testimonials.css';
 
 const testimonials = [
     {
-        quote: "SynkrLabs developed a lightning-fast and highly secure website for Somadhan Technologies. Their attention to detail and understanding of modern web architecture is truly impressive.",
+        quote: "SynkrLabs developed a lightning-fast and highly secure academic portal for our department. Their attention to detail and understanding of modern web architecture is truly impressive.",
         author: "Dr. Utpal Barman",
-        role: "Founder, Somadhan Technologies"
+        role: "Associate Professor"
     },
     {
         quote: "The team delivered a portal that is both intuitive and visually appealing. Their web development expertise made organizing complex information look completely effortless.",
